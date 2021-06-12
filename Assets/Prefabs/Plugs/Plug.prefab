@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 3099198723918919191}
   - component: {fileID: 3099198723918919192}
   m_Layer: 5
-  m_Name: Jack
+  m_Name: Plug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
