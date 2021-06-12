@@ -13,6 +13,7 @@ namespace Common
         [SerializeField] private float _scale = 1.0f;
 
         public event Action RightClickEvent;
+        public event Action PointerUpEvent;
 
         private Canvas _canvas;
         private RectTransform _parent;
@@ -73,8 +74,14 @@ namespace Common
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                return;
+            }
+
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             _shadow.enabled = false;
+            PointerUpEvent?.Invoke();
         }
     }
 }

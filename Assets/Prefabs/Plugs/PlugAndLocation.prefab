@@ -272,7 +272,7 @@ PrefabInstance:
     - target: {fileID: 3099198723918919195, guid: 33f76cd0f002b65459babb32d8aad345,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3099198723918919195, guid: 33f76cd0f002b65459babb32d8aad345,
         type: 3}
@@ -339,6 +339,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plug
       objectReference: {fileID: 0}
+    - target: {fileID: 5127451436717699450, guid: 33f76cd0f002b65459babb32d8aad345,
+        type: 3}
+      propertyPath: _originPosition
+      value: 
+      objectReference: {fileID: 1885518717352019715}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33f76cd0f002b65459babb32d8aad345, type: 3}
 --- !u!224 &5947523799554506831 stripped
