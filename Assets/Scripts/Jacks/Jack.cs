@@ -10,10 +10,8 @@ namespace Jacks
 {
     public class Jack : MonoBehaviour
     {
-        [SerializeField] private Image _light;
-        [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private Image _lightGlow;
         [SerializeField] private Transform _jackPosition;
-        [SerializeField] private JacksConfiguration _jacksConfiguration;
 
         public CallService.Person Person => _person;
         private CallService.Person _person;
@@ -22,19 +20,18 @@ namespace Jacks
         public void Initalize(CallService.Person person)
         {
             _person = person;
-            _text.text = person.Id;
         }
         
         public Vector3 JackPosition => _jackPosition.position;
 
         public void LightOn()
         {
-            _light.color = _jacksConfiguration.LightOn;
+            _lightGlow.gameObject.SetActive(true);
         }
 
         public void LightOff()
         {
-            _light.color = _jacksConfiguration.LightOff;
+            _lightGlow.gameObject.SetActive(false);
         }
 
         public void PlugConnected(Plug plug)

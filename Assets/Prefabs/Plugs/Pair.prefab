@@ -54,9 +54,7 @@ MonoBehaviour:
   _callService: {fileID: 0}
   _inputPlug: {fileID: 1028230369192581832}
   _outputPlug: {fileID: 928978045762475003}
-  _light: {fileID: 1656740814801118789}
-  _jacksConfiguration: {fileID: 11400000, guid: 0875a1c236b99f8458d3ef682b2d7583,
-    type: 2}
+  _lightGlow: {fileID: 1656740814801118789}
 --- !u!1 &7099341832283989293
 GameObject:
   m_ObjectHideFlags: 0

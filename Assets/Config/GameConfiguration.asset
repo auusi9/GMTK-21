@@ -15,4 +15,4 @@ MonoBehaviour:
   GameDuration: 240
   TimeBetweenCalls: 2
   TimeToConnect: 30
-  CallTime: 30
+  CallTime: 10

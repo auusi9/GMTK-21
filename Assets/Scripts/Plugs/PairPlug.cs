@@ -10,8 +10,7 @@ namespace Plugs
         [SerializeField] private CallService _callService;
         [SerializeField] private Plug _inputPlug;
         [SerializeField] private Plug _outputPlug;
-        [SerializeField] private Image _light;
-        [SerializeField] private JacksConfiguration _jacksConfiguration;
+        [SerializeField] private Image _lightGlow;
 
         public Plug InputPlug => _inputPlug;
 
@@ -19,12 +18,12 @@ namespace Plugs
 
         public void LightOn()
         {
-            _light.color = _jacksConfiguration.LightOn;
+            _lightGlow.gameObject.SetActive(true);
         }
 
         public void LightOff()
         {
-            _light.color = _jacksConfiguration.LightOff;
+            _lightGlow.gameObject.SetActive(false);
         }
     }
 }
