@@ -50,6 +50,12 @@ namespace Plugs
 
         public void ConnectToJack(Jack closestJack)
         {
+            if (Jack != closestJack)
+            {
+                Jack?.PlugDisconnected(); 
+                Jack = null;
+            }
+            
             Jack = closestJack;
             transform.position = closestJack.JackPosition;
             RectTransform rectTransform = (RectTransform) transform;

@@ -75,7 +75,7 @@ namespace Services
 
         private void GenerateCall()
         {
-            List<Person> freePeople = _people.Where(x => !x.InCall && !x.AwaitingToBeCalled).ToList();
+            List<Person> freePeople = _people.Where(x => !x.InCall && !x.AwaitingToBeCalled && !x.PlugConnected).ToList();
 
             if (freePeople.Count < 2)
             {
@@ -118,7 +118,7 @@ namespace Services
             public string Address;
             public bool InCall;
             public bool AwaitingToBeCalled;
-            public Jack JackConnected;
+            public Plug PlugConnected;
         }
     }
 }

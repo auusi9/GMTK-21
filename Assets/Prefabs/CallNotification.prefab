@@ -430,6 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6529975623589355829}
   - component: {fileID: 6529975623589355831}
+  - component: {fileID: 1848826897604020939}
   m_Layer: 5
   m_Name: CallNotification
   m_TagString: Untagged
@@ -467,6 +468,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6529975623589355826}
   m_CullTransparentMesh: 1
+--- !u!114 &1848826897604020939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529975623589355826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cacdd7529b4ca8b5309c61db871d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeText: {fileID: 1845368255831588545}
+  _notificationText: {fileID: 7122056301761600532}
+  _barFill: {fileID: 3944989911711562896}
+  _gameConfiguration: {fileID: 11400000, guid: f97e470c6ab42bc449aa4247df2fb5a0, type: 2}
 --- !u!1 &7150224839915566030
 GameObject:
   m_ObjectHideFlags: 0

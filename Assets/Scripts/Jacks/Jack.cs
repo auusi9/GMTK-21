@@ -36,12 +36,12 @@ namespace Jacks
 
         public void PlugConnected(Plug plug)
         {
-            _person.JackConnected = this;
+            _person.PlugConnected = plug;
         }
 
         public void PlugDisconnected()
         {
-            _person.JackConnected = null;
+            _person.PlugConnected = null;
         }
     }
 }

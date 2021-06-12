@@ -1,5 +1,6 @@
 using System.Linq;
 using Jacks;
+using Notifications;
 using Plugs;
 using Services;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Machine
         [SerializeField] private Canvas _canvas;
         [SerializeField] private float _minimumContactDistance;
         [SerializeField] private CallService _callService;
+        [SerializeField] private NotificationCenter _notificationCenter;
         
         private void Start()
         {
@@ -51,7 +53,7 @@ namespace Machine
 
         private void LookForJack(Plugs.Plug plug)
         {
-            Jack closestJack = GetClosestJack(plug.ContactPosition);
+            Jack closestJack = GetClosestJack(plug.ContactPosition, plug);
 
             if (closestJack == null)
             {
@@ -72,7 +74,6 @@ namespace Machine
 
             if (call.InputPerson == closestJack.Person)
             {
-                //Show message
                 call.ConnectInputPlug(plug);
             }
             else
@@ -80,7 +81,7 @@ namespace Machine
                 call.ConnectOutputPlug(plug);
             }
 
-            if (call.InputPlug != null && call.OutputPlug != null)
+            if (call.InputPlug != null && call.OutputPlug != null && call.InputPlug.PairPlug == call.OutputPlug.PairPlug)
             {
                 call.ConnectCall();
                 plug.PairPlug.LightOn();
@@ -88,7 +89,7 @@ namespace Machine
             }
         }
         
-        private Jack GetClosestJack(Vector3 position)
+        private Jack GetClosestJack(Vector3 position, Plug currentPlug)
         {
             Jack closestJack = null;
             float minDist = _minimumContactDistance;
@@ -96,7 +97,7 @@ namespace Machine
             foreach (Jack t in _jacks)
             {
                 float dist = Vector3.Distance(t.JackPosition, currentPos);
-                if (dist < minDist && !t.Person.JackConnected)
+                if (dist < minDist && (!t.Person.PlugConnected || t.Person.PlugConnected == currentPlug))
                 {
                     closestJack = t;
                     minDist = dist;
@@ -109,6 +110,12 @@ namespace Machine
         {
             Jack inputJack = _jacks.FirstOrDefault(x => x.Person == call.InputPerson);
             inputJack?.LightOn();
+            _notificationCenter.CreateNotification(call);
+
+            if (call.InputPerson.PlugConnected)
+            {
+                call.ConnectInputPlug(call.InputPerson.PlugConnected);
+            }
         }
 
         private void CallEnded(Call call)

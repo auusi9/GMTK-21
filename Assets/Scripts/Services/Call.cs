@@ -11,6 +11,7 @@ namespace Services
         public float TimeToConnect;
         public float CallTime;
         public bool CallConnected;
+
         public Plug InputPlug { get; private set; }
         public Plug OutputPlug { get; private set; }
         public event Action<Call> CallInterrupted;
