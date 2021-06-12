@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 4212592888618426177}
   - component: {fileID: 4212592888618426207}
   - component: {fileID: 4212592888618426206}
+  - component: {fileID: 1293542008865260298}
   m_Layer: 5
   m_Name: Jack
   m_TagString: Untagged
@@ -154,6 +155,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1293542008865260298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212592888618426176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6a7b54ed4b7a24e866b3adc82637e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 4212592888825895743}
+  _text: {fileID: 4212592888671464466}
+  _jackPosition: {fileID: 4212592889355380781}
+  _jacksConfiguration: {fileID: 11400000, guid: 0875a1c236b99f8458d3ef682b2d7583,
+    type: 2}
+  _id: 
 --- !u!1 &4212592888671464468
 GameObject:
   m_ObjectHideFlags: 0

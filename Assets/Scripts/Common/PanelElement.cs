@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 namespace Common
 {
-    public class PanelElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler,
-        IPointerUpHandler
+    public class PanelElement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Shadow _shadow;
