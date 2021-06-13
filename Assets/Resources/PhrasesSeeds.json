@@ -1,33 +1,33 @@
 ﻿{
   "byName": [
-	"Good day. I would like to get in contact with {0}, please.",
-	"Hello my dear, could I please talk to my good friend {0}?",
-	"Hi, I’m looking for {0}, could you send me through?",
-	"Greetings! I’m looking for someone called {0}. Can you help me?",
-	"Would it be possible for me to speak to {0}?",
-	"Hey, I don’t have much time, send me through to {0}, quick.",
-	"Could I speak to {0}, please?",
-	"{0}, please.",
-	"Can I get in contact with {0} from here?",
-	"I’m trying to call {0}, could you lend me a hand?"
+	"Good day. I would like to get in contact with <color=red>{0}</color>, please.",
+	"Hello my dear, could I please talk to my good friend <color=red>{0}</color>?",
+	"Hi, I’m looking for <color=red>{0}</color>, could you send me through?",
+	"Greetings! I’m looking for someone called <color=red>{0}</color>. Can you help me?",
+	"Would it be possible for me to speak to <color=red>{0}</color>?",
+	"Hey, I don’t have much time, send me through to <color=red>{0}</color>, quick.",
+	"Could I speak to <color=red>{0}</color>, please?",
+	"<color=red>{0}</color>, please.",
+	"Can I get in contact with <color=red>{0}</color> from here?",
+	"I’m trying to call <color=red>{0}</color>, could you lend me a hand?"
   ],
   "byAddress": [
-	"I’m trying to reach out to someone living in {0}, could you send me through?",
-	"Hi, I would like to speak with my aunt, she lives in {0}.",
-	"Good day, I’m trying to call my dad but he’s working right now in {0}, could you help me?",
-	"I want to call a friend of mine living in {0}, please.",
-	"Send me through to {0}, thank you.",
-	"I have someone in {0} I want to call.",
-	"My friend lives in {0}, could you send me through?",
-	"I want to call my mom, she lives in {0}.",
-	"I’m trying to phone someone living in {0}.",
-	"I would like to get in touch with someone living in {0}, would that be possible?"
+	"I’m trying to reach out to someone living in <color=red>{0}</color>, could you send me through?",
+	"Hi, I would like to speak with my aunt, she lives in <color=red>{0}</color>.",
+	"Good day, I’m trying to call my dad but he’s working right now in <color=red>{0}</color>, could you help me?",
+	"I want to call a friend of mine living in <color=red>{0}</color>, please.",
+	"Send me through to <color=red>{0}</color>, thank you.",
+	"I have someone in <color=red>{0}</color> I want to call.",
+	"My friend lives in <color=red>{0}</color>, could you send me through?",
+	"I want to call my mom, she lives in <color=red>{0}</color>.",
+	"I’m trying to phone someone living in <color=red>{0}</color>.",
+	"I would like to get in touch with someone living in <color=red>{0}</color>, would that be possible?"
   ],
   "byId": [
-	"Good day, I’m trying to call someone that has the ID {0}.",
-	"Hi there, I would like to phone the ID {0}.",
-	"Greetings. Send me through to the ID {0}, please.",
-	"I want to get in contact with the ID {0}.",
-	"I would like to speak to the ID {0}, thank you."
+	"Good day, I’m trying to call someone that has the ID <color=red>{0}</color>.",
+	"Hi there, I would like to phone the ID <color=red>{0}</color>.",
+	"Greetings. Send me through to the ID <color=red>{0}</color>, please.",
+	"I want to get in contact with the ID <color=red>{0}</color>.",
+	"I would like to speak to the ID <color=red>{0}</color>, thank you."
   ]
 }
