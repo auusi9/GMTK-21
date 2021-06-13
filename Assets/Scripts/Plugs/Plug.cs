@@ -15,6 +15,7 @@ namespace Plugs
         [SerializeField] private Image _plugImage;
         [SerializeField] private Sprite _plugOut;
         [SerializeField] private Sprite _plugIn;
+        [SerializeField] private float _speed = 100;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _plugInAudio;
         [SerializeField] private AudioClip _plugOutAudio;
@@ -26,6 +27,7 @@ namespace Plugs
         public event Action<Plug> JoinToJack;
         public event Action JackDisconnected;
         public Jack Jack;
+        private bool _goToOrigin;
 
         private void Start()
         {
@@ -53,13 +55,28 @@ namespace Plugs
 
         public void GoToOrigin()
         {
+            _goToOrigin = true;
             _audioSource.clip = _goToOriginAudio;
             _audioSource.Play();
             Jack?.PlugDisconnected();
             Jack = null;
-            transform.position = _originPosition.position;
+            //transform.position = _originPosition.position;
             JackDisconnected?.Invoke();
             _pairPlug.LightOff();
+        }
+
+        private void Update()
+        {
+            if (_goToOrigin)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, _originPosition.position, _speed * Time.deltaTime);
+
+                if (Vector3.Distance(transform.position, _originPosition.position) < 0.4f)
+                {
+                    _goToOrigin = false;
+                    transform.position = _originPosition.position;
+                }
+            }
         }
 
         public void ConnectToJack(Jack closestJack)
@@ -70,8 +87,7 @@ namespace Plugs
                 Jack = null;
                 JackDisconnected?.Invoke();
             }
-
-           
+            
             Jack = closestJack;
             transform.position = closestJack.JackPosition;
             RectTransform rectTransform = (RectTransform) transform;
@@ -98,6 +114,8 @@ namespace Plugs
                 _audioSource.Play();
             }
 
+            _goToOrigin = false;
+            
             _plugImage.sprite = _plugOut;
             _plugImage.SetNativeSize();
         }
