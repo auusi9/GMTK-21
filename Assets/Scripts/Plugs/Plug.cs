@@ -15,8 +15,12 @@ namespace Plugs
         [SerializeField] private Image _plugImage;
         [SerializeField] private Sprite _plugOut;
         [SerializeField] private Sprite _plugIn;
-        
+        [SerializeField] private AudioClip _plugInAudio;
+        [SerializeField] private AudioClip _plugOutAudio;
+        [SerializeField] private AudioClip _goToOriginAudio;
+
         public PairPlug PairPlug => _pairPlug;
+        AudioSource audio;
 
         public Vector3 ContactPosition => _contactPosition.position;
         public event Action<Plug> JoinToJack;
@@ -25,6 +29,7 @@ namespace Plugs
 
         private void Start()
         {
+            audio = GetComponent<AudioSource>();
             _panelElement.PointerUpEvent += JoinJack;
             _panelElement.PointerDownEvent += PointerDownImage;
             _panelElement.RightClickEvent += RightClick;
@@ -49,6 +54,8 @@ namespace Plugs
 
         public void GoToOrigin()
         {
+            audio.clip = _goToOriginAudio;
+            audio.Play();
             Jack?.PlugDisconnected();
             Jack = null;
             transform.position = _originPosition.position;
@@ -64,13 +71,16 @@ namespace Plugs
                 Jack = null;
                 JackDisconnected?.Invoke();
             }
-            
+
+           
             Jack = closestJack;
             transform.position = closestJack.JackPosition;
             RectTransform rectTransform = (RectTransform) transform;
             rectTransform.anchoredPosition -= Vector2.up * 42;
             _plugImage.sprite = _plugIn;
             _plugImage.SetNativeSize();
+            audio.clip = _plugInAudio;
+            audio.Play();
         }
 
         private void RightClick()
@@ -82,6 +92,12 @@ namespace Plugs
         
         private void PointerDownImage()
         {
+            if (Jack != null)
+            {
+                audio.clip = _plugOutAudio;
+                audio.Play();
+            }
+
             _plugImage.sprite = _plugOut;
             _plugImage.SetNativeSize();
         }
