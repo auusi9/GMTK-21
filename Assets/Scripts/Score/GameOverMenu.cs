@@ -1,5 +1,4 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿
 using Configs;
 using TMPro;
 using UnityEngine;

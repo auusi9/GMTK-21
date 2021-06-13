@@ -25,8 +25,8 @@ namespace Services
                 {
                     Id = Ids[i],
                     IsCity =isCity,
-                    Name = isCity ? " " : peopleSeeds.names[UnityEngine.Random.Range(0, peopleSeeds.names.Length)],
-                    Surname = isCity ? " " : peopleSeeds.surnames[UnityEngine.Random.Range(0, peopleSeeds.surnames.Length)],
+                    Name = isCity ? " " : peopleSeeds.names[UnityEngine.Random.Range(0, peopleSeeds.names.Count)],
+                    Surname = isCity ? " " : peopleSeeds.surnames[UnityEngine.Random.Range(0, peopleSeeds.surnames.Count)],
                     Address = isCity ? peopleSeeds.cities[UnityEngine.Random.Range(0, peopleSeeds.cities.Count)] : peopleSeeds.address[UnityEngine.Random.Range(0, peopleSeeds.address.Count)] 
                 };
 
@@ -37,6 +37,8 @@ namespace Services
                 else
                 {
                     peopleSeeds.address.Remove(persons[i].Address);
+                    peopleSeeds.names.Remove(persons[i].Name);
+                    peopleSeeds.surnames.Remove(persons[i].Surname);
                 }
             }
 
@@ -47,8 +49,8 @@ namespace Services
     [Serializable]
     public class PeopleSeeds
     {
-        public string[] names;
-        public string[] surnames;
+        public List<string> names;
+        public List<string> surnames;
         public List<string> address;
         public List<string> cities;
     }

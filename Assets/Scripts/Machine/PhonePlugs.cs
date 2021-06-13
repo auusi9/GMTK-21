@@ -47,6 +47,7 @@ namespace Machine
             CallService.NewCall -= NewCall;
             CallService.CallEnded -= CallEnded;
             CallService.CallMissed -= CallMissed;
+            CallService.GameOver -= CreateGameOver;
             
             foreach (var plug in _plugs)
             {
