@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using Configs;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Score
         private void Start()
         {
             _restartButton.onClick.AddListener(RestarGame);
+            DontDestroyOnLoad(this);
         }
 
         private void OnDestroy()
@@ -24,9 +26,12 @@ namespace Score
             _restartButton.onClick.RemoveListener(RestarGame);
         }
 
-        private void RestarGame()
+        private async void RestarGame()
         {
-            SceneManager.LoadScene(0);
+            _restartButton.interactable = false;
+            await SceneManager.LoadSceneAsync(0);
+            await new WaitForSeconds(0.2f);
+            Destroy(gameObject);
         }
 
         public void SetScore(int score)
