@@ -46,7 +46,7 @@ namespace Score
             }
             else
             {
-                _wellDoneMessage.text = "Better luck next time! loser..";
+                _wellDoneMessage.text = "Better luck next time!";
             }
         }
     }
