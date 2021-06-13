@@ -60,7 +60,6 @@ namespace Plugs
             _audioSource.Play();
             Jack?.PlugDisconnected();
             Jack = null;
-            //transform.position = _originPosition.position;
             JackDisconnected?.Invoke();
             _pairPlug.LightOff();
         }
