@@ -3206,7 +3206,7 @@ MonoBehaviour:
   - {fileID: 1020414498}
   - {fileID: 23057120}
   _canvas: {fileID: 1792045064}
-  _minimumContactDistance: 0.45
+  _minimumContactDistance: 0.6
   _callService: {fileID: 1792045066}
   _notificationCenter: {fileID: 1472681389}
   _gameOverPrefab: {fileID: 5972377403422063026, guid: d6fc9c456e58e594481a9564de77a897,
@@ -7886,6 +7886,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1792045065}
     m_Modifications:
+    - target: {fileID: 410942409, guid: 6e99ac2e74ab6844c81cacb321022e4b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -484.1001
+      objectReference: {fileID: 0}
     - target: {fileID: 853264666036279166, guid: 6e99ac2e74ab6844c81cacb321022e4b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7995,6 +7999,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Opacity
+      objectReference: {fileID: 0}
+    - target: {fileID: 853264666401373984, guid: 6e99ac2e74ab6844c81cacb321022e4b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 68.1499
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e99ac2e74ab6844c81cacb321022e4b, type: 3}
