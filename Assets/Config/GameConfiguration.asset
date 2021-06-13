@@ -16,3 +16,5 @@ MonoBehaviour:
   TimeBetweenCalls: {x: 8, y: 12}
   TimeToConnect: 30
   CallTime: {x: 15, y: 20}
+  MaxScore: 100
+  ExpectedScore: 1000

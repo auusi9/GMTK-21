@@ -2,6 +2,7 @@ using System.Linq;
 using Jacks;
 using Notifications;
 using Plugs;
+using Score;
 using Services;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace Machine
         [SerializeField] private float _minimumContactDistance;
         [SerializeField] private CallService _callService;
         [SerializeField] private NotificationCenter _notificationCenter;
+        [SerializeField] private GameOverMenu _gameOverPrefab;
         
         private void Start()
         {
@@ -22,6 +24,7 @@ namespace Machine
             CallService.CallEnded += CallEnded;
             CallService.CallMissed += CallMissed;
             CallService.CallInterrupted += CallInterrputed;
+            CallService.GameOver += CreateGameOver;
             
             foreach (var plug in _plugs)
             {
@@ -74,6 +77,7 @@ namespace Machine
             if (call.InputPerson == closestJack.Person)
             {
                 call.ConnectInputPlug(plug);
+                _callService.StartGame();
             }
             else
             {
@@ -140,6 +144,12 @@ namespace Machine
             Jack outputJack = _jacks.FirstOrDefault(x => x.Person == call.OutputPerson);
             outputJack?.LightOff(); 
             call.CallEnded();
+        }
+        
+        private void CreateGameOver(int score)
+        {
+            GameOverMenu gameOverMenu = Instantiate(_gameOverPrefab);
+            gameOverMenu.SetScore(score);
         }
     }
 }

@@ -24,19 +24,26 @@ namespace Services
         public static event Action<Call> CallEnded;
         public static event Action<Call> CallMissed;
         public static event Action<Call> CallInterrupted;
+        public static event Action<int> GameOver;
         public static event Action<int, int> NewScore;
 
         private float _nextCall = 0f;
         private int _score;
+        private bool _fistCall;
+        private bool _gameStarted;
         
-        private void Awake()
+        private async void Awake()
         {
             _people = PeopleGeneratorService.GeneratePeople();
-            _nextCall = 1f;
+            await new WaitForEndOfFrame();
+            GenerateCall();
         }
 
         private void Update()
         {
+            if (!_gameStarted)
+                return;
+            
             if (_nextCall < _lastCallTime)
             {
                 GenerateCall();
@@ -60,6 +67,12 @@ namespace Services
             
             _lastCallTime += Time.deltaTime;
             _gameTime += Time.deltaTime;
+
+            if (_gameTime > _gameConfiguration.GameDuration)
+            {
+                _gameStarted = false;
+                GameOver?.Invoke(_score);
+            }
         }
 
         private Call UpdateCall(Call call)
@@ -90,10 +103,10 @@ namespace Services
                 return;
             }
             
-            Person newInputPerson = freePeople[Random.Range(0, freePeople.Count)];
+            Person newInputPerson = GetRandomPerson(freePeople);
             newInputPerson.InCall = true;
             freePeople.Remove(newInputPerson);
-            Person newOutputPerson = freePeople[Random.Range(0, freePeople.Count)];
+            Person newOutputPerson = GetRandomPerson(freePeople);
             newOutputPerson.AwaitingToBeCalled = true;
             
             Call call = new Call(newInputPerson, newOutputPerson, _gameConfiguration.TimeToConnect, Random.Range(_gameConfiguration.CallTime.x, _gameConfiguration.CallTime.y));
@@ -103,6 +116,17 @@ namespace Services
             _lastCallTime = 0f;
             _nextCall = Random.Range(_gameConfiguration.TimeBetweenCalls.x, _gameConfiguration.TimeBetweenCalls.y);
             Debug.Log(" NEW CALL: From: " + call.InputPerson.Id + " To: " + call.OutputPerson.Id);
+        }
+
+        private Person GetRandomPerson(List<Person> freePeople)
+        {
+            if (!_fistCall)
+            {
+                _fistCall = true;
+                return freePeople.FirstOrDefault(x => x.Id == "15");
+            }
+
+            return freePeople[Random.Range(0, freePeople.Count)];
         }
 
         private void CallInterruptedHandler(Call call)
@@ -139,6 +163,11 @@ namespace Services
             call.Score = (int) (percentage > 2/3f ? _gameConfiguration.MaxScore : percentage > 1/3f ? _gameConfiguration.MaxScore * 0.75f : _gameConfiguration.MaxScore * 0.45f);
             _score += call.Score;
             NewScore?.Invoke(_score, call.Score);
+        }
+
+        public void StartGame()
+        {
+            _gameStarted = true;
         }
     }
 }

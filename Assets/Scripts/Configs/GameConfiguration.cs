@@ -10,5 +10,6 @@ namespace Configs
         public float TimeToConnect;
         public Vector2 CallTime;
         public int MaxScore = 100;
+        public int ExpectedScore = 1000;
     }
 }
