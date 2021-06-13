@@ -6,8 +6,8 @@ namespace Configs
     public class GameConfiguration : ScriptableObject
     {
         public float GameDuration;
-        public float TimeBetweenCalls;
+        public Vector2 TimeBetweenCalls;
         public float TimeToConnect;
-        public float CallTime;
+        public Vector2 CallTime;
     }
 }

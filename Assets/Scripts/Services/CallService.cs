@@ -23,14 +23,17 @@ namespace Services
         public static event Action<Call> CallMissed;
         public static event Action<Call> CallInterrupted;
 
+        private float _nextCall = 0f;
+        
         private void Awake()
         {
             _people = PeopleGeneratorService.GeneratePeople();
+            _nextCall = 1f;
         }
 
         private void Update()
         {
-            if (_gameConfiguration.TimeBetweenCalls < _lastCallTime)
+            if (_nextCall < _lastCallTime)
             {
                 GenerateCall();
             }
@@ -88,12 +91,12 @@ namespace Services
             Person newOutputPerson = freePeople[Random.Range(0, freePeople.Count)];
             newOutputPerson.AwaitingToBeCalled = true;
             
-            Call call = new Call(newInputPerson, newOutputPerson, _gameConfiguration.TimeToConnect, _gameConfiguration.CallTime);
+            Call call = new Call(newInputPerson, newOutputPerson, _gameConfiguration.TimeToConnect, Random.Range(_gameConfiguration.CallTime.x, _gameConfiguration.CallTime.y));
             _onGoingCalls.Add(call);
             NewCall?.Invoke(call);
             call.CallInterrupted += CallInterruptedHandler;
             _lastCallTime = 0f;
-            
+            _nextCall = Random.Range(_gameConfiguration.TimeBetweenCalls.x, _gameConfiguration.TimeBetweenCalls.y);
             Debug.Log(" NEW CALL: From: " + call.InputPerson.Id + " To: " + call.OutputPerson.Id);
         }
 
@@ -118,6 +121,7 @@ namespace Services
             public string Address;
             public bool InCall;
             public bool AwaitingToBeCalled;
+            public bool IsCity;
             public Plug PlugConnected;
         }
     }

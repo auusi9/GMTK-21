@@ -1,0 +1,14 @@
+﻿{
+  "byName": [
+    "Good day. I would like to get in contact with {0}, please.",
+    "{0}"
+  ],
+  "byAddress": [
+    "I’m trying to reach out to someone living in {0}, could you send me through?",
+    "{0}"
+  ],
+  "byId": [
+    "Good day. I would like to get in contact with {0}, please.",
+    "{0}"
+  ]
+}

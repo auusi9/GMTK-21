@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Code.Utils;
 
 namespace Services
@@ -19,13 +20,24 @@ namespace Services
 
             for (var i = 0; i < persons.Length; i++)
             {
+                bool isCity = i >= 30;
                 persons[i] = new CallService.Person
                 {
                     Id = Ids[i],
-                    Name = peopleSeeds.names[UnityEngine.Random.Range(0, peopleSeeds.names.Length)],
-                    Surname = peopleSeeds.surnames[UnityEngine.Random.Range(0, peopleSeeds.surnames.Length)],
-                    Address = peopleSeeds.address[UnityEngine.Random.Range(0, peopleSeeds.address.Length)]
+                    IsCity =isCity,
+                    Name = isCity ? " " : peopleSeeds.names[UnityEngine.Random.Range(0, peopleSeeds.names.Length)],
+                    Surname = isCity ? " " : peopleSeeds.surnames[UnityEngine.Random.Range(0, peopleSeeds.surnames.Length)],
+                    Address = isCity ? peopleSeeds.cities[UnityEngine.Random.Range(0, peopleSeeds.cities.Count)] : peopleSeeds.address[UnityEngine.Random.Range(0, peopleSeeds.address.Count)] 
                 };
+
+                if (isCity)
+                {
+                    peopleSeeds.cities.Remove(persons[i].Address);
+                }
+                else
+                {
+                    peopleSeeds.address.Remove(persons[i].Address);
+                }
             }
 
             return persons;
@@ -37,6 +49,7 @@ namespace Services
     {
         public string[] names;
         public string[] surnames;
-        public string[] address;
+        public List<string> address;
+        public List<string> cities;
     }
 }

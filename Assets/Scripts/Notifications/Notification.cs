@@ -15,10 +15,12 @@ namespace Notifications
         [SerializeField] private GameConfiguration _gameConfiguration;
 
         private Call _call;
+        private string _phrase;
 
         public void SetCall(Call call)
         {
             _call = call;
+            _phrase = RandomPhrase.GetPhrase(call);
         }
 
         private void Update()
@@ -40,10 +42,10 @@ namespace Notifications
             }
             else
             {
-                _notificationText.text = _call.OutputPerson.Id;
+                _notificationText.text = _phrase;
             }
 
-            _timeText.text = _call.TimeToConnect.ToString("N0");
+            _timeText.text = _call.InputPerson.Id;
             _barFill.fillAmount = _call.TimeToConnect / _gameConfiguration.TimeToConnect;
         }
     }
