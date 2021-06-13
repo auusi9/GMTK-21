@@ -17,6 +17,7 @@ namespace Machine
         [SerializeField] private CallService _callService;
         [SerializeField] private NotificationCenter _notificationCenter;
         [SerializeField] private GameOverMenu _gameOverPrefab;
+        [SerializeField] private GameObject _opacity;
         
         private void Start()
         {
@@ -78,6 +79,7 @@ namespace Machine
             {
                 call.ConnectInputPlug(plug);
                 _callService.StartGame();
+                _opacity.gameObject.SetActive(false);
             }
             else
             {
