@@ -82,6 +82,9 @@ namespace Services
             if (call.TimeToConnect < 0)
             {
                 CallMissed?.Invoke(call);
+                int pen = (int) (_gameConfiguration.MaxScore * 0.15f);
+                _score -= pen;
+                NewScore?.Invoke(_score, pen);
                 return call;
             }
 
@@ -134,7 +137,7 @@ namespace Services
             call.CallInterrupted -= CallInterruptedHandler;
             CallInterrupted?.Invoke(call);
             _onGoingCalls.Remove(call);
-            int pen = (int) (call.Score * 0.15f);
+            int pen = (int) (call.Score * 0.30f);
             _score -= pen;
             NewScore?.Invoke(_score, pen);
         }
