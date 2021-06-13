@@ -13,6 +13,7 @@ namespace Common
 
         public event Action RightClickEvent;
         public event Action PointerUpEvent;
+        public event Action PointerDownEvent;
 
         private Canvas _canvas;
         private RectTransform _parent;
@@ -69,6 +70,7 @@ namespace Common
             transform.localScale = new Vector3(_scale, _scale, 1.0f);
             _shadow.enabled = true;
             transform.SetAsLastSibling();
+            PointerDownEvent?.Invoke();
         }
 
         public void OnPointerUp(PointerEventData eventData)
