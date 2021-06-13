@@ -301,3 +301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textMeshProUGUI: {fileID: 8233083332747394091}
+  _gameConfiguration: {fileID: 11400000, guid: f97e470c6ab42bc449aa4247df2fb5a0, type: 2}
+  _timeToDeactivate: 1
+  _image: {fileID: 6515371161780505518}
+  _green: {r: 0.26157403, g: 1, b: 0, a: 0.49019608}
+  _yellow: {r: 0.95662296, g: 1, b: 0, a: 0.49019608}
+  _orange: {r: 1, g: 0.46787494, b: 0, a: 0.49019608}
+  _red: {r: 1, g: 0, b: 0, a: 0.49019608}
