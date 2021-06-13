@@ -3206,7 +3206,7 @@ MonoBehaviour:
   - {fileID: 1020414498}
   - {fileID: 23057120}
   _canvas: {fileID: 1792045064}
-  _minimumContactDistance: 0.47
+  _minimumContactDistance: 0.6
   _callService: {fileID: 1792045066}
   _notificationCenter: {fileID: 1472681389}
   _gameOverPrefab: {fileID: 5972377403422063026, guid: d6fc9c456e58e594481a9564de77a897,
