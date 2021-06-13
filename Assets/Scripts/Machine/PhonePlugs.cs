@@ -58,7 +58,6 @@ namespace Machine
             if (closestJack == null)
             {
                 plug.GoToOrigin();
-                plug.PairPlug.LightOff();
                 return;
             }
 
