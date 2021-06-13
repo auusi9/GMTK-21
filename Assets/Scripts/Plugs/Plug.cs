@@ -15,12 +15,12 @@ namespace Plugs
         [SerializeField] private Image _plugImage;
         [SerializeField] private Sprite _plugOut;
         [SerializeField] private Sprite _plugIn;
+        [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _plugInAudio;
         [SerializeField] private AudioClip _plugOutAudio;
         [SerializeField] private AudioClip _goToOriginAudio;
 
         public PairPlug PairPlug => _pairPlug;
-        AudioSource audio;
 
         public Vector3 ContactPosition => _contactPosition.position;
         public event Action<Plug> JoinToJack;
@@ -29,7 +29,6 @@ namespace Plugs
 
         private void Start()
         {
-            audio = GetComponent<AudioSource>();
             _panelElement.PointerUpEvent += JoinJack;
             _panelElement.PointerDownEvent += PointerDownImage;
             _panelElement.RightClickEvent += RightClick;
@@ -54,8 +53,8 @@ namespace Plugs
 
         public void GoToOrigin()
         {
-            audio.clip = _goToOriginAudio;
-            audio.Play();
+            _audioSource.clip = _goToOriginAudio;
+            _audioSource.Play();
             Jack?.PlugDisconnected();
             Jack = null;
             transform.position = _originPosition.position;
@@ -79,12 +78,13 @@ namespace Plugs
             rectTransform.anchoredPosition -= Vector2.up * 42;
             _plugImage.sprite = _plugIn;
             _plugImage.SetNativeSize();
-            audio.clip = _plugInAudio;
-            audio.Play();
+            _audioSource.clip = _plugInAudio;
+            _audioSource.Play();
         }
 
         private void RightClick()
         {
+            _audioSource.PlayOneShot(_plugOutAudio);
             GoToOrigin();
             _plugImage.sprite = _plugOut;
             _plugImage.SetNativeSize();
@@ -94,8 +94,8 @@ namespace Plugs
         {
             if (Jack != null)
             {
-                audio.clip = _plugOutAudio;
-                audio.Play();
+                _audioSource.clip = _plugOutAudio;
+                _audioSource.Play();
             }
 
             _plugImage.sprite = _plugOut;

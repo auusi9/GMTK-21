@@ -151,6 +151,7 @@ MonoBehaviour:
   _plugImage: {fileID: 3099198723918919194}
   _plugOut: {fileID: 21300000, guid: 3fae95a2377b53f4793bf41352c68fbf, type: 3}
   _plugIn: {fileID: 21300000, guid: 67b22e90327323a45990baf1bb002266, type: 3}
+  _audioSource: {fileID: 8131219450217649734}
   _plugInAudio: {fileID: 8300000, guid: 9eaf38e801c9b9e439b4a0344c16608c, type: 3}
   _plugOutAudio: {fileID: 8300000, guid: 154e75567f8e7e0419f371417474e67e, type: 3}
   _goToOriginAudio: {fileID: 8300000, guid: 840f279a66946fb408e06d19bb841b92, type: 3}

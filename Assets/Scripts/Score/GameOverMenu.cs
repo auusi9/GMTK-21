@@ -13,6 +13,7 @@ namespace Score
         [SerializeField] private TextMeshProUGUI _wellDoneMessage;
         [SerializeField] private GameConfiguration _gameConfiguration;
         [SerializeField] private Button _restartButton;
+        [SerializeField] private AudioSource _audioSource;
 
         private void Start()
         {
@@ -21,6 +22,7 @@ namespace Score
 
         private void OnDestroy()
         {
+
             _restartButton.onClick.RemoveListener(RestarGame);
         }
 

@@ -13,6 +13,7 @@ namespace Notifications
         [SerializeField] private TextMeshProUGUI _notificationText;
         [SerializeField] private Image _barFill;
         [SerializeField] private GameConfiguration _gameConfiguration;
+        [SerializeField] private AudioSource _audioSource;
 
         private Call _call;
         private string _phrase;
@@ -21,6 +22,7 @@ namespace Notifications
         {
             _call = call;
             _phrase = RandomPhrase.GetPhrase(call);
+            _audioSource.Play();
         }
 
         private void Update()
