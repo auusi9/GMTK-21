@@ -27,11 +27,14 @@ namespace Plugs
         {
             _panelElement.PointerUpEvent += JoinJack;
             _panelElement.PointerDownEvent += PointerDownImage;
+            _panelElement.RightClickEvent += RightClick;
         }
 
         private void OnDestroy()
         {
             _panelElement.PointerUpEvent -= JoinJack;
+            _panelElement.PointerDownEvent -= PointerDownImage;
+            _panelElement.RightClickEvent -= RightClick;
         }
 
         public void Configure(Canvas canvas, RectTransform rectTransform)
@@ -69,6 +72,13 @@ namespace Plugs
             _plugImage.SetNativeSize();
         }
 
+        private void RightClick()
+        {
+            GoToOrigin();
+            _plugImage.sprite = _plugOut;
+            _plugImage.SetNativeSize();
+        }
+        
         private void PointerDownImage()
         {
             _plugImage.sprite = _plugOut;
