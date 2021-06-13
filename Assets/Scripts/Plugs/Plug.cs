@@ -2,6 +2,7 @@ using System;
 using Common;
 using Jacks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Plugs
 {
@@ -11,6 +12,9 @@ namespace Plugs
         [SerializeField] private Transform _contactPosition;
         [SerializeField] private Transform _originPosition;
         [SerializeField] private PairPlug _pairPlug;
+        [SerializeField] private Image _plugImage;
+        [SerializeField] private Sprite _plugOut;
+        [SerializeField] private Sprite _plugIn;
         
         public PairPlug PairPlug => _pairPlug;
 
@@ -22,6 +26,7 @@ namespace Plugs
         private void Start()
         {
             _panelElement.PointerUpEvent += JoinJack;
+            _panelElement.PointerDownEvent += PointerDownImage;
         }
 
         private void OnDestroy()
@@ -59,7 +64,15 @@ namespace Plugs
             Jack = closestJack;
             transform.position = closestJack.JackPosition;
             RectTransform rectTransform = (RectTransform) transform;
-            rectTransform.anchoredPosition -= Vector2.up * 50;
+            rectTransform.anchoredPosition -= Vector2.up * 42;
+            _plugImage.sprite = _plugIn;
+            _plugImage.SetNativeSize();
+        }
+
+        private void PointerDownImage()
+        {
+            _plugImage.sprite = _plugOut;
+            _plugImage.SetNativeSize();
         }
     }
 }
