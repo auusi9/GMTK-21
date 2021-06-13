@@ -14,16 +14,20 @@ namespace Services
         [SerializeField] private GameConfiguration _gameConfiguration;
         private Person[] _people;
         public Person[] People => _people;
+        public float CurrentGameTime => _gameTime;
 
         private List<Call> _onGoingCalls = new List<Call>();
         private float _lastCallTime;
-        
+        private float _gameTime;
+
         public static event Action<Call> NewCall;
         public static event Action<Call> CallEnded;
         public static event Action<Call> CallMissed;
         public static event Action<Call> CallInterrupted;
+        public static event Action<int, int> NewScore;
 
         private float _nextCall = 0f;
+        private int _score;
         
         private void Awake()
         {
@@ -55,6 +59,7 @@ namespace Services
             }
             
             _lastCallTime += Time.deltaTime;
+            _gameTime += Time.deltaTime;
         }
 
         private Call UpdateCall(Call call)
@@ -105,6 +110,9 @@ namespace Services
             call.CallInterrupted -= CallInterruptedHandler;
             CallInterrupted?.Invoke(call);
             _onGoingCalls.Remove(call);
+            int pen = (int) (call.Score * 0.15f);
+            _score -= pen;
+            NewScore?.Invoke(_score, pen);
         }
 
         public Call GetPersonCall(Person closestJackPerson)
@@ -123,6 +131,14 @@ namespace Services
             public bool AwaitingToBeCalled;
             public bool IsCity;
             public Plug PlugConnected;
+        }
+
+        public void CallConnected(Call call)
+        {
+            float percentage = call.TimeToConnect / _gameConfiguration.TimeToConnect;
+            call.Score = (int) (percentage > 2/3f ? _gameConfiguration.MaxScore : percentage > 1/3f ? _gameConfiguration.MaxScore * 0.75f : _gameConfiguration.MaxScore * 0.45f);
+            _score += call.Score;
+            NewScore?.Invoke(_score, call.Score);
         }
     }
 }

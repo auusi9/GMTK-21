@@ -82,6 +82,7 @@ namespace Machine
 
             if (call.InputPlug != null && call.OutputPlug != null && call.InputPlug.PairPlug == call.OutputPlug.PairPlug)
             {
+                _callService.CallConnected(call);
                 call.ConnectCall();
                 plug.PairPlug.LightOn();
                 call.OutputPlug.Jack.LightOn();

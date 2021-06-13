@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a434318e0664abea5b182741022b032, type: 3}
   m_Name: GameConfiguration
   m_EditorClassIdentifier: 
-  GameDuration: 240
+  GameDuration: 742.59
   TimeBetweenCalls: {x: 8, y: 12}
   TimeToConnect: 30
   CallTime: {x: 15, y: 20}

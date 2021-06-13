@@ -62,6 +62,7 @@ namespace Plugs
             {
                 Jack?.PlugDisconnected(); 
                 Jack = null;
+                JackDisconnected?.Invoke();
             }
             
             Jack = closestJack;

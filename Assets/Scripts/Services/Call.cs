@@ -11,6 +11,7 @@ namespace Services
         public float TimeToConnect;
         public float CallTime;
         public bool CallConnected;
+        public int Score;
 
         public Plug InputPlug { get; private set; }
         public Plug OutputPlug { get; private set; }
@@ -48,6 +49,11 @@ namespace Services
 
         private void InputPlugDisconnected()
         {
+            if (InputPlug == null)
+            {
+                return;
+            }
+            
             InputPlug.JackDisconnected -= InputPlugDisconnected;
             InputPlug = null;
             IsCallInterrupted();
@@ -55,6 +61,11 @@ namespace Services
         
         private void OutputPlugDisconnected()
         {
+            if (OutputPlug == null)
+            {
+                return;
+            }
+            
             OutputPlug.JackDisconnected -= OutputPlugDisconnected;
             OutputPlug = null;
             IsCallInterrupted();

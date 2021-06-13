@@ -9,5 +9,6 @@ namespace Configs
         public Vector2 TimeBetweenCalls;
         public float TimeToConnect;
         public Vector2 CallTime;
+        public int MaxScore = 100;
     }
 }
