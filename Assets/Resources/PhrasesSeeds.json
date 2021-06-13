@@ -14,7 +14,7 @@
   "byAddress": [
 	"I’m trying to reach out to someone living in <color=#ff9bac>{0}</color>, could you send me through?",
 	"Hi, I would like to speak with my aunt, she lives in <color=#ff9bac>{0}</color>.",
-	"Good day, I’m trying to call my dad but he’s working right now in <color=#ff9bac>{0}</color>, could you help me?",
+	"Good day, I’m trying to call my dad, he works in <color=#ff9bac>{0}</color>, could you help me?",
 	"I want to call a friend of mine living in <color=#ff9bac>{0}</color>, please.",
 	"Send me through to <color=#ff9bac>{0}</color>, thank you.",
 	"I have someone in <color=#ff9bac>{0}</color> I want to call.",
