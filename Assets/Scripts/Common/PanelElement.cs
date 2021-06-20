@@ -74,6 +74,7 @@ namespace Common
             transform.SetAsLastSibling();
             PointerDownEvent?.Invoke();
             PointerHandler.Instance.PanelClicked(GetHashCode());
+            MoveObjectToPointer(eventData);
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -97,6 +98,26 @@ namespace Common
         public void OnPointerExit(PointerEventData eventData)
         {
             PointerHandler.Instance.PanelStoppedHovering(GetHashCode());
+        }
+
+        private void MoveObjectToPointer(PointerEventData eventData)
+        {
+            Vector3 pointerPos = Camera.main.ScreenToWorldPoint(eventData.position);
+            Vector2 objPivot = _rectTransform.pivot;
+            
+            transform.position = new Vector3(pointerPos.x, pointerPos.y, transform.position.z);
+            
+            if (objPivot.x != 0.5f || objPivot.y != 0.5)
+            {
+                Vector2 sizeDelta = _rectTransform.sizeDelta;
+                float xDistToCenter = (sizeDelta.x * objPivot.x) - (sizeDelta.x * 0.5f);
+                float yDistToCenter = (sizeDelta.y * objPivot.y) - (sizeDelta.y * 0.5f);
+
+                transform.localPosition += new Vector3(xDistToCenter, yDistToCenter, 0);;
+            }
+
+            float pointerSpotOffset = 16f;
+            transform.localPosition += new Vector3(pointerSpotOffset, -pointerSpotOffset, 0);
         }
     }
 }
