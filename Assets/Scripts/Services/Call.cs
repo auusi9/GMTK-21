@@ -23,6 +23,7 @@ namespace Services
             OutputPerson = outputPerson;
             TimeToConnect = timeToConnect;
             CallTime = callTime;
+            Score = 0;
         }
 
         public void ConnectCall()

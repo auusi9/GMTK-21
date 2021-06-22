@@ -58,6 +58,11 @@ namespace Plugs
             _goToOrigin = true;
             _audioSource.clip = _goToOriginAudio;
             _audioSource.Play();
+            DisconnectPlug();
+        }
+
+        private void DisconnectPlug()
+        {
             Jack?.PlugDisconnected();
             Jack = null;
             JackDisconnected?.Invoke();

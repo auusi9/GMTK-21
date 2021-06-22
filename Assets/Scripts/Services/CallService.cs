@@ -162,6 +162,11 @@ namespace Services
 
         public void CallConnected(Call call)
         {
+            if (call.Score != 0)
+            {
+                return;
+            }
+            
             float percentage = call.TimeToConnect / _gameConfiguration.TimeToConnect;
             call.Score = (int) (percentage > 2/3f ? _gameConfiguration.MaxScore : percentage > 1/3f ? _gameConfiguration.MaxScore * 0.75f : _gameConfiguration.MaxScore * 0.45f);
             _score += call.Score;
